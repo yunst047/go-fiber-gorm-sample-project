@@ -29,6 +29,8 @@ var (
 	// Port holds the server port configuration
 	Port   = getEnv("PORT", "8080")
 	UseJWT = getEnv("USE_JWT", "true")
+
+	AllowOrigins = getEnv("ALLOW_ORIGINS", "localhost:3000, https://gofiber.net")
 )
 
 func getEnv(key, defaultValue string) string {
