@@ -80,13 +80,6 @@ func NewMySQL() (*gorm.DB, error) {
 		panic("failed to connect database")
 	}
 
-	// Automigrate all models
-	//if err := db.AutoMigrate(
-	//	&entities.Sample{},
-	//); err != nil {
-	//	return nil, fmt.Errorf("failed to automigrate models: %v", err)
-	//}
-
 	// Ping the database to ensure connection
 	sqlDB, err := db.DB()
 	if err != nil {

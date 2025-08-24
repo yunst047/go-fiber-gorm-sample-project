@@ -26,6 +26,16 @@ var (
 		DBName:   getEnv("DB_NAME", "sample"),
 	}
 
+	AccessTokenConfig = struct {
+		Secret                 string
+		AccessTokenExpiration  int
+		RefreshTokenExpiration int
+	}{
+		Secret:                 getEnv("ACCESS_TOKEN_SECRET", "mysecret"),
+		AccessTokenExpiration:  getEnvInt("ACCESS_TOKEN_EXPIRES_IN", 3600),
+		RefreshTokenExpiration: getEnvInt("REFRESH_TOKEN_EXPIRES_IN", 7*24*3600),
+	}
+
 	// Port holds the server port configuration
 	Port   = getEnv("PORT", "8080")
 	UseJWT = getEnv("USE_JWT", "true")

@@ -5,6 +5,7 @@ import (
 
 	"go-fiber-gorm-sample/config"
 	"go-fiber-gorm-sample/database"
+	"go-fiber-gorm-sample/entities"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -19,6 +20,12 @@ func main() {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 	defer database.CloseDB(db)
+
+	var models = []interface{}{
+		&entities.User{},
+	}
+
+	database.AutomigrateModels(db, models...)
 
 	app := fiber.New()
 
